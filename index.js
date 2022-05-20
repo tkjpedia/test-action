@@ -31,11 +31,7 @@ const URL = mongoose.model("URL", urlSchema);
 const port = process.env.PORT;
 
 app.use(cors());
-app.use(
-  bodyParser.urlencoded({
-    extended: false,
-  })
-);
+app.use(bodyParser.json());
 
 app.route("/").get((req, res) => {
   res.send("info man@tkjpedia.com");
