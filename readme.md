@@ -6,7 +6,7 @@ This project written in javascript, built using expressjs framework and some lib
 
 ## Usage
 
-set mongodb url and port in env file
+set mongodb uri and port in env file
 
 ### create shortlink
 
