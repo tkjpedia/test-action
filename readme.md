@@ -13,7 +13,7 @@ This project written in javascript, built using expressjs framework and some lib
 ```bash
 Method: post
 Content-Type: application/json
-Url: localhost:3000/api/shorturl
+Url: host:port/api/shorturl
 ```
 
 ```json
@@ -31,4 +31,4 @@ Url: localhost:3000/api/shorturl
 }
 ```
 
-access to web browser localhost:3000/4AUDdF_ will be redirect to https://www.tkjpedia.com
+access using web browser http://host:port/4AUDdF_ will be redirect to https://www.tkjpedia.com
