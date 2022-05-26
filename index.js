@@ -43,7 +43,7 @@ app.route("/api/shorturl/").post(async (req, res) => {
   let urlCode = nanoid(7);
   console.log(url);
   //validasi url
-  if (!validUrl == isWebUri(url)) {
+  if (!validUrl.isWebUri(url)) {
     res.json({
       error: "invalid url",
     });

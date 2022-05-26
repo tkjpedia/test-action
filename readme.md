@@ -32,3 +32,7 @@ Url: localhost:3000/api/shorturl
 ```
 
 access to web browser localhost:3000/4AUDdF_ will be redirect to https://www.tkjpedia.com
+
+# Installation
+
+Set mongodb url and port on .env file
