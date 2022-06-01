@@ -34,3 +34,20 @@ Url: host:port/api/shorturl
 ```
 
 access using web browser http://host:port/4AUDdF_ will be redirect to https://www.tkjpedia.com
+
+
+## Docker
+
+### download via docker registry
+
+```bash
+docker pull man20820/backend-shorturl
+docker run -p 80:80 -d man20820/backend-shorturl
+```
+
+### build with dockerfile
+
+```bash
+docker build . -t man20820/backend-shorturl
+docker run -p 80:80 -d man20820/backend-shorturl
+```
