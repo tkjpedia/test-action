@@ -6,6 +6,8 @@ This project written in javascript, built using expressjs framework and some lib
 
 ## Usage
 
+rename .env.example to .env
+
 set mongodb uri and port in env file
 
 ### create shortlink
@@ -38,14 +40,19 @@ access using web browser http://host:port/E_KXV77 will be redirect to https://ww
 
 ## Docker
 
-### download via docker registry
+### build with dockerfile
+
+clone this repository
 
 ```bash
-docker pull man20820/backend-shorturl
-docker run -p 80:80 -d man20820/backend-shorturl
+git clone https://github.com/man20820/shorturl-backend.git
 ```
 
-### build with dockerfile (recomended)
+rename .env.example to .env
+
+set mongodb uri and port in env file
+
+build docker image and run the container
 
 ```bash
 docker build . -t man20820/backend-shorturl
