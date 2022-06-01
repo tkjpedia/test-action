@@ -29,11 +29,11 @@ Url: host:port/api/shorturl
 ```json
 {
     "original_url": "https://www.tkjpedia.com",
-    "short_url": "4AUDdF_"
+    "short_url": "E_KXV77"
 }
 ```
 
-access using web browser http://host:port/4AUDdF_ will be redirect to https://www.tkjpedia.com
+access using web browser http://host:port/E_KXV77 will be redirect to https://www.tkjpedia.com
 
 
 ## Docker
