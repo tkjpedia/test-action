@@ -45,7 +45,7 @@ docker pull man20820/backend-shorturl
 docker run -p 80:80 -d man20820/backend-shorturl
 ```
 
-### build with dockerfile
+### build with dockerfile (recomended)
 
 ```bash
 docker build . -t man20820/backend-shorturl
