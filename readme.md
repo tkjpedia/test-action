@@ -56,5 +56,32 @@ build docker image and run the container
 
 ```bash
 docker build . -t man20820/backend-shorturl
-docker run -p 80:80 -d man20820/backend-shorturl
+```
+run container
+
+```bash
+docker run -e MONGO_URI=[mongo_uri] -e PORT=80 -p 0.0.0.0:80:80/tcp man20820/shorturl-backend
+```
+
+or run via docker compose, rename docker-compose.yml.example to docker-compose.yml and modify MONGO_URI & PORT inside it. 
+
+```bash
+docker compose up -d
+```
+
+### download from registry
+
+```bash
+docker pull man20820/shorturl-backend
+```
+run container
+
+```bash
+docker run -e MONGO_URI=[mongo_uri] -e PORT=80 -p 0.0.0.0:80:80/tcp man20820/shorturl-backend
+```
+
+or run via docker compose, rename docker-compose.yml.example to docker-compose.yml and modify MONGO_URI & PORT inside it. 
+
+```bash
+docker compose up -d
 ```

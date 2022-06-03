@@ -16,7 +16,7 @@ connection.on("error", console.log.bind(console, "connection error: "));
 connection.once("open", () => {
   console.log("mongodb success");
 });
-const uri = process.env.MONGO_URI;
+const uri = process.env.MONGO_URI || $MONGO_URI;
 mongoose.connect(uri, {
   useNewUrlParser: true,
 });
@@ -28,7 +28,7 @@ const urlSchema = new Schema({
 const URL = mongoose.model("URL", urlSchema);
 
 //basic configuration
-const port = process.env.PORT;
+const port = process.env.PORT || $PORT;
 
 app.use(cors());
 app.use(bodyParser.json());
