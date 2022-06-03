@@ -48,10 +48,6 @@ clone this repository
 git clone https://github.com/man20820/shorturl-backend.git
 ```
 
-rename .env.example to .env
-
-set mongodb uri and port in env file
-
 build docker image and run the container
 
 ```bash
