@@ -1,8 +1,8 @@
-name: Delete
+name: Delete Package
 on:
   workflow_run:
     workflows:
-      - "Docker Build & Push"
+      - build
     types:
       - completed
 
