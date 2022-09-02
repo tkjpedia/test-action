@@ -13,6 +13,6 @@ jobs:
     steps:
       - uses: actions/delete-package-versions@v2
         with: 
-          package-name: 'test-package'
+          package-name: 'test-action'
           min-versions-to-keep: 3
           delete-only-pre-release-versions: "true"
