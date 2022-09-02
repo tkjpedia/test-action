@@ -2,12 +2,12 @@ name: Delete Package
 on:
   workflow_run:
     workflows:
-      - build
+      - "Docker Build & Push"
     types:
       - completed
 
 jobs:
-  deploy:
+  delete:
     runs-on: ubuntu-latest
 
     steps:
