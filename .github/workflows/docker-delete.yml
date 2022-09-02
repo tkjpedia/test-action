@@ -13,6 +13,6 @@ jobs:
     steps:
       - uses: actions/delete-package-versions@v2
         with: 
-          package-name: 'test-action'
+          package-name: 'sha256-*'
           min-versions-to-keep: 3
           delete-only-pre-release-versions: "true"
