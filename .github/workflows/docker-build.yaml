@@ -32,4 +32,13 @@ jobs:
     steps:
       - name: Deploy dev server
         run: |
+          export cr=ghcr.io
+          export cr_user=${{ secrets.cr_user }}
+          export cr_pat=${{ secrets.cr_pat }}
+          export target=dev
+          export time=$(date +%Y%m%d%H%M%S)
+          export image_name=${{ github.repository }}
+          echo $image_name
+          echo $cr_user
+          docker login $cr -u $cr_user -p $cr_pat
           docker pull $cr/$image_name:$target-$time
