@@ -25,7 +25,7 @@ jobs:
         docker login $cr -u $cr_user -p $cr_pat
         docker build . --file Dockerfile --tag $cr/$image_name:$target-$time
         docker push $cr/$image_name:$target-$time
-        echo ::set-output time=$time
+        echo ::set-output name=time::$time
 
   deploy_dev:
     runs-on: ubuntu-latest
