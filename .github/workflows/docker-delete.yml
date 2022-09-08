@@ -2,7 +2,7 @@ name: Delete Package
 on:
   workflow_run:
     workflows:
-      - "Docker Build & Push"
+      - "Docker Build"
     types:
       - completed
 
@@ -15,4 +15,3 @@ jobs:
         with: 
           package-name: 'test-action'
           min-versions-to-keep: 3
-          delete-only-pre-release-versions: "true"
