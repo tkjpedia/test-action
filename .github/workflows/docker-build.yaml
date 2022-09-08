@@ -18,9 +18,9 @@ jobs:
         export cr_user=${{ secrets.cr_user }}
         export cr_pat=${{ secrets.cr_pat }}
         export time=$(date +%Y%m%d%H%M%S)
-        export image_name=${{ github.repository }}:$time
+        export image_name=${{ github.repository }}
         echo $image_name
         echo $cr_user
         docker login $cr -u $cr_user -p $cr_pat
-        docker build . --file Dockerfile --tag $image_name
-        docker push $cr/$image_name
+        docker build . --file Dockerfile --tag $image_name:$time
+        docker push $cr/$image_name:$time
