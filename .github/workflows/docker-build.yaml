@@ -14,7 +14,11 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: |
-        time=$(date +%Y%m%d%H%M%S)
-        image_name=${{ github.repository }}:$time
+        export cr=ghcr.io
+        export cr_user=${{ secrets.cr_user }}
+        export cr_pat=${{ secrets.cr_pat }}
+        export time=$(date +%Y%m%d%H%M%S)
+        export image_name=${{ github.repository }}:$time
         echo $image_name
-        # docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+        echo $cr_user
+        # docker build . --file Dockerfile --tag $image_name
