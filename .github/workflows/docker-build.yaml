@@ -28,6 +28,8 @@ jobs:
 
   deploy_dev:
     runs-on: ubuntu-latest
+    env:
+      time: ${{ env.time }}
     steps:
       - name: Deploy dev server
         run: |
@@ -35,7 +37,7 @@ jobs:
           export cr_user=${{ secrets.cr_user }}
           export cr_pat=${{ secrets.cr_pat }}
           export target=dev
-          export time=${{ env.time }}
+          export time=$time
           export image_name=${{ github.repository }}
           echo $image_name
           echo $time
