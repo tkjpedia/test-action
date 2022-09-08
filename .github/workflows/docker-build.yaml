@@ -36,7 +36,7 @@ jobs:
           export cr_user=${{ secrets.cr_user }}
           export cr_pat=${{ secrets.cr_pat }}
           export target=dev
-          export time=${{ steps.build.time }}
+          export time=${{ steps.build.outputs.time }}
           export image_name=${{ github.repository }}
           echo $image_name
           echo $time
