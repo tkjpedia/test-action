@@ -32,13 +32,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy dev server
-        with: 
-          time: ${{ env.time }}
         run: |
           export cr=ghcr.io
           export cr_user=${{ secrets.cr_user }}
           export cr_pat=${{ secrets.cr_pat }}
           export target=dev
+          export time=${{ env.time }}
           export image_name=${{ github.repository }}
           echo $image_name
           echo $time
