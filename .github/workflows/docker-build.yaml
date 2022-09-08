@@ -25,7 +25,7 @@ jobs:
         docker login $cr -u $cr_user -p $cr_pat
         docker build . --file Dockerfile --tag $cr/$image_name:$target-$time
         docker push $cr/$image_name:$target-$time
-        echo "time=$time" >> GITHUB_ENV
+        echo ::set-output time=$time
 
   deploy_dev:
     runs-on: ubuntu-latest
