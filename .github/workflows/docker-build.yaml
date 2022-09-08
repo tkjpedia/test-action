@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
+      name: Build the Docker image
+      id: build
       run: |
         export cr=ghcr.io
         export cr_user=${{ secrets.cr_user }}
@@ -28,8 +29,6 @@ jobs:
 
   deploy_dev:
     runs-on: ubuntu-latest
-    env:
-      time: ${{ env.time }}
     steps:
       - name: Deploy dev server
         run: |
@@ -37,7 +36,7 @@ jobs:
           export cr_user=${{ secrets.cr_user }}
           export cr_pat=${{ secrets.cr_pat }}
           export target=dev
-          export time=$time
+          export time=${{ steps.build.time }}
           export image_name=${{ github.repository }}
           echo $image_name
           echo $time
