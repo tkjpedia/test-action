@@ -9,8 +9,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    env: 
-      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
@@ -26,7 +24,7 @@ jobs:
         docker login $cr -u $cr_user -p $cr_pat
         docker build . --file Dockerfile --tag $cr/$image_name:$target-$time
         docker push $cr/$image_name:$target-$time
-        echo "::set-env name=time::$time"
+        echo "time=$time" >> GITHUB_ENV
 
   deploy_dev:
     runs-on: ubuntu-latest
