@@ -25,7 +25,7 @@ jobs:
         export image_name=${{ github.repository }}
         docker build . --file Dockerfile --tag $cr/$image_name:$target-$time
         mkdir -p /tmp/$image_name/
-        docker export $cr/$image_name:$target-$time >  /tmp/$image_name/artifact.tar
+        docker save -o /tmp/$image_name/artifact.tar $cr/$image_name:$target-$time
         echo ::set-output name=time::$time
         echo ::set-output name=image_name::$image_name
         echo ::set-output name=target::$target
@@ -53,7 +53,7 @@ jobs:
         export cr_user=${{ secrets.cr_user }}
         export cr_pat=${{ secrets.cr_pat }}
         docker login $cr -u $cr_user -p $cr_pat
-        cat /tmp/$image_name/artifact.tar | docker import $cr/$image_name:$target-$time
+        docker load -i /tmp/$image_name/artifact.tar
         docker push $cr/$image_name:$target-$time
           
 
