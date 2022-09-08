@@ -53,7 +53,7 @@ jobs:
         export cr_user=${{ secrets.cr_user }}
         export cr_pat=${{ secrets.cr_pat }}
         docker login $cr -u $cr_user -p $cr_pat
-        docker load -i /tmp/$image_name/artifact.tar
+        docker load -i /tmp/artifact.tar
         docker push $cr/$image_name:$target-$time
           
 
