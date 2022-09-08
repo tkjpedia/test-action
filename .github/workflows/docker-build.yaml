@@ -25,7 +25,7 @@ jobs:
         docker login $cr -u $cr_user -p $cr_pat
         docker build . --file Dockerfile --tag $cr/$image_name:$target-$time
         docker push $cr/$image_name:$target-$time
-        echo ::set-output name=time::$time
+        echo "time2=$time" >> GITHUB_ENV
 
   deploy_dev:
     runs-on: ubuntu-latest
@@ -36,7 +36,7 @@ jobs:
           export cr_user=${{ secrets.cr_user }}
           export cr_pat=${{ secrets.cr_pat }}
           export target=dev
-          export time=${{ steps.build.outputs.time }}
+          export time=${{ env.time2 }}
           export image_name=${{ github.repository }}
           echo $image_name
           echo $time
