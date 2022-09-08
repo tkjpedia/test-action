@@ -21,4 +21,5 @@ jobs:
         export image_name=${{ github.repository }}:$time
         echo $image_name
         echo $cr_user
+        docker login $cr -u $cr_user -p $cr_pat
         # docker build . --file Dockerfile --tag $image_name
