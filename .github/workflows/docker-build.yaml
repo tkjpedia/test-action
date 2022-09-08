@@ -30,18 +30,17 @@ jobs:
 
   deploy_dev:
     runs-on: ubuntu-latest
-    env: 
-      time: ""
     steps:
       - name: Deploy dev server
+        with: 
+          time: ${{ env.time }}
         run: |
           export cr=ghcr.io
           export cr_user=${{ secrets.cr_user }}
           export cr_pat=${{ secrets.cr_pat }}
           export target=dev
-          export time=${{ env.time }}
           export image_name=${{ github.repository }}
           echo $image_name
-          echo $cr_user
+          echo $time
           docker login $cr -u $cr_user -p $cr_pat
           docker pull $cr/$image_name:$target-$time
