@@ -25,20 +25,18 @@ jobs:
         docker login $cr -u $cr_user -p $cr_pat
         docker build . --file Dockerfile --tag $cr/$image_name:$target-$time
         docker push $cr/$image_name:$target-$time
-        echo "time2=$time" >> GITHUB_ENV
+        echo ::set-env name=time2::$time
 
   deploy_dev:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy dev server
-        with: 
-          title3: ${{ env.time2 }}
         run: |
           export cr=ghcr.io
           export cr_user=${{ secrets.cr_user }}
           export cr_pat=${{ secrets.cr_pat }}
           export target=dev
-          export time=${{ env.time3 }}
+          export time=${{ env.time2 }}
           export image_name=${{ github.repository }}
           echo $image_name
           echo $time
