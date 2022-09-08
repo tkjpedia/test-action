@@ -29,9 +29,9 @@ jobs:
   push:
     runs-on: ubuntu-latest
     needs: build
-    id: push
     steps:
     - name: Push to Github Container registry
+      id: push
       run: |
         export image_name=${{ needs.build.outputs.image_name }}
         export target=${{ needs.build.outputs.target }}
