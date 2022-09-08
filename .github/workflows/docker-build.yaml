@@ -24,15 +24,25 @@ jobs:
         export time=$(date +%Y%m%d%H%M%S)
         export image_name=${{ github.repository }}
         docker build . --file Dockerfile --tag $cr/$image_name:$target-$time
+        mkdir -p /$image_name/
+        docker export $cr/$image_name:$target-$time >  /$image_name/$cr/$image_name:$target-$time.tar
         echo ::set-output name=time::$time
         echo ::set-output name=image_name::$image_name
         echo ::set-output name=target::$target
         echo ::set-output name=cr::$cr
+    - uses: actions/upload-artifact@master
+      with:
+        name: $image_name
+        path: /$image_name/
 
   push:
     runs-on: ubuntu-latest
     needs: build
     steps:
+    - uses: download-artifact@master
+      with:
+        name: $image_name
+        path: /$image_name/
     - name: Push to Github Container registry
       id: push
       run: |
@@ -43,6 +53,7 @@ jobs:
         export cr_user=${{ secrets.cr_user }}
         export cr_pat=${{ secrets.cr_pat }}
         docker login $cr -u $cr_user -p $cr_pat
+        cat /$image_name/$cr/$image_name:$target-$time.tar | docker import $cr/$image_name:$target-$time
         docker push $cr/$image_name:$target-$time
           
 
