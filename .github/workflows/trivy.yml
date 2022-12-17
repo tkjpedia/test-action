@@ -1,0 +1,29 @@
+name: build
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+# env:
+#   cr_user: ${{ secrets.cr_user }}
+#   cr_pat: ${{ secrets.cr_pat }}
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build an image from Dockerfile
+        run: |
+          # echo ${{ env.cr_pat }} | docker login ghcr.io -u ${{ env.cr_user }} --password-stdin
+          docker build -t ghcr.io/tkjpedia/test-action:${{ github.sha }} .
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'ghcr.io/tkjpedia/test-action:${{ github.sha }}'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
