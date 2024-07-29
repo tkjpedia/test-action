@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: test
         run: |
-          echo $PRIVKEY > privkey.pem
+          echo $PRIVKEY | base64 -d > privkey.pem
 
       - name: upload artifact
         uses: actions/upload-artifact@v4.3.1
